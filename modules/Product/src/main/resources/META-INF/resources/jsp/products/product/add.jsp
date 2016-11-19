@@ -1,11 +1,11 @@
 <%@ include file="/init.jsp"%>
 
 <div class="container">
-	<p><h2><liferay-ui:message key="portlet.products.product.add.name"/></h2></p>
+	<p><h2><liferay-ui:message key="portlet.products.product.add.caption"/></h2></p>
 	<div>
-		<portlet:actionURL var="urlAddProd" name="processActionAddProduct"/>
+		<portlet:actionURL var="addProductAU" name="addProductPA"/>
 		
-		<form id="<portlet:namespace />frm_AddProd" action="${urlAddProd}" method="post">
+		<form id="<portlet:namespace />frm_AddProd" action="${addProductAU}" method="post">
 			<div class="form-group">
 				<label for="prod_id"><liferay-ui:message key="prod.id"/></label> 
 				<input type="text" class="form-control" id="prod_id"
@@ -27,11 +27,6 @@
 					placeholder="<liferay-ui:message key="prod.unitPrice"/>" name="<portlet:namespace />prodUnitPrice" />
 			</div>
 			<div class="form-group">
-				<!-- 
-				<label for="prod_desc"><liferay-ui:message key="prod.desc"/></label> 
-				<input type="text" class="form-control" id="prod_desc"
-					placeholder="<liferay-ui:message key="prod.desc"/>" name="<portlet:namespace />prodDesc" />
-				-->
 				<label for="prod_desc"><liferay-ui:message key="prod.desc"/></label> 
 				<liferay-ui:input-editor name="prodDesc" />
 				<input id="prod_desc" name="<portlet:namespace />prodDesc" type="hidden" />
@@ -40,9 +35,7 @@
 		</form>
 	</div>
 	<div>
-		<portlet:actionURL var="urlViewProductList" name="processActionViewProductList">
-			<portlet:param name="jspPage" value="<%= ModuleConstants.URL_PRODUCTS_VIEW %>" />
-		</portlet:actionURL>
-		<a href="${urlViewProductList}"><liferay-ui:message key="url.cancel" /></a>
+		<portlet:actionURL var="goToViewProductListPageAU" name="goToViewProductListPagePA" />
+		<a href="${goToViewProductListPageAU}"><liferay-ui:message key="url.cancel" /></a>
 	</div>
 </div>

@@ -68,4 +68,9 @@ public class ProductServiceImpl implements IProductService {
 		
 		return true;
 	}
+
+	@Override
+	public List<Product> getListByKey(String key) {
+		return productDAO.getListByKey(key);
+	}
 }

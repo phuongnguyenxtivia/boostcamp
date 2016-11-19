@@ -8,15 +8,18 @@
 %>
 
 <div class="container">
-	<p><h2><liferay-ui:message key="portlet.products.product.edit.name"/></h2></p>
+	<p><h2><liferay-ui:message key="portlet.products.product.edit.caption"/></h2></p>
+
 	<div>
-		<portlet:actionURL var="urlUpdateProduct" name="processActionUpdateProduct"/>
+		<portlet:actionURL var="updateProductAU" name="updateProductPA"/>
 		
-		<form id="<portlet:namespace />frm_UpdateProduct" action="${urlUpdateProduct}" method="post">
+		<form id="<portlet:namespace />frm_UpdateProduct" action="${updateProductAU}" method="post">
 			<div class="form-group">
-				<label for="prod_id"><liferay-ui:message key="prod.id"/></label> 
-				<input type="text" class="form-control" id="prod_id"
-					placeholder="<liferay-ui:message key="prod.id"/>" name="<portlet:namespace />prodId" value="${product.id}" />
+				<label for="prod_id"><liferay-ui:message key="prod.id" /></label> <label
+					for="prod_id">${product.id}</label> 
+				<input type="hidden"
+					class="form-control" id="prod_id"
+					name="<portlet:namespace />prodId" value="${product.id}" />
 			</div>
 			<div class="form-group">
 				<label for="prod_name"><liferay-ui:message key="prod.name"/></label> 
@@ -53,14 +56,11 @@
 			<button type="submit" class="btn btn-primary"><liferay-ui:message key="frm.btnSubmit"/></button>
 		</form>
 	</div>
+	
 	<div>
-		<portlet:actionURL var="urlViewProductDetail">
-			<portlet:param name="javax.portlet.action"
-				value="processActionViewProductDetail" />
-			<portlet:param name="jspPage" value="<%= ModuleConstants.URL_PRODUCT_VIEW %>" />
+		<portlet:actionURL var="goToViewProductPageAU" name="goToViewProductPagePA">
 			<portlet:param name="prodId" value="${product.id}" />
 		</portlet:actionURL>
-		<a href="${urlViewProductDetail}"><liferay-ui:message
-				key="url.cancel" /></a>
+		<a href="${goToViewProductPageAU}"><liferay-ui:message key="url.cancel" /></a>
 	</div>
 </div>
