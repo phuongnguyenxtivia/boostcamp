@@ -34,6 +34,8 @@ import javax.portlet.ProcessAction;
 import javax.portlet.RenderMode;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -203,6 +205,19 @@ public class ProductPortlet extends MVCPortlet {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet#serveResource(javax.portlet.ResourceRequest, javax.portlet.ResourceResponse)
+	 */
+	@Override
+	public void serveResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse)
+			throws IOException, PortletException {
+		String prodId = ParamUtil.getString(resourceRequest, "prodId");
+		if (!Validator.isBlank(prodId)) {
+			productService.delete(prodId);
+		}
+//		super.serveResource(resourceRequest, resourceResponse);
+	}
+
 	@ProcessAction(name="updateProductPA")
 	public void updateProduct(ActionRequest actionRequest, ActionResponse actionResponse) {
 		Product product = new Product();

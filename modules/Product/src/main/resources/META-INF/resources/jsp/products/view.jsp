@@ -30,6 +30,29 @@
 
 <div class="container">
 	<p class="text-info"><b><liferay-ui:message key="${msgWelcome}"/></b></p>
+	
+	<portlet:resourceURL var="ajaxURL"></portlet:resourceURL>
+	<script>
+		function <portlet:namespace/>ajaxCall(prodId) {
+			$.ajax({
+				url : '${ajaxURL}',
+				data : {
+					prodId : prodId
+				},
+				type : 'POST',
+				dataType : "json",
+				success : function(data) {
+					// do stuff on success
+					$(this).closest('tr').remove();
+				     return false;
+				},
+				error : function() {
+					//do stuff on error
+					console.log('Error Occurred');
+				}
+			});
+		}
+	</script>
 	<div class="table-responsive">
 		<table class="table table-hover">
 			<thead>
@@ -56,7 +79,7 @@
 				<fmt:setLocale value="en_US"/>
 
 				<c:forEach items="${products}" var="product">
-					<tr>
+					<tr id="row_${products}">
 						<c:if test="<%= showProductId %>">
 							<td>
 								<portlet:actionURL var="goToViewProductPageAU" name="goToViewProductPagePA">
@@ -79,11 +102,12 @@
 						<c:if test="<%= showProductDescription %>">
 							<td>${product.description}</td>
 						</c:if>
-						<td>
+						<td><!-- 
 							<portlet:actionURL var="deleteProductAU" name="deleteProductPA">
 								<portlet:param name="prodId" value="${product.id}" />
 							</portlet:actionURL>
-							<a href="${deleteProductAU}"><liferay-ui:message key="url.delete"/></a>
+							<a href="${deleteProductAU}"><liferay-ui:message key="url.delete"/></a> -->
+							<a href="#" onclick="<portlet:namespace/>ajaxCall('${product.id}')"><liferay-ui:message key="url.delete"/>
 						</td>
 					</tr>
 				</c:forEach>
