@@ -6,7 +6,6 @@ package com.xtivia.boostcamp.service.impl;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.liferay.portal.kernel.util.StringUtil;
 import com.xtivia.boostcamp.dao.IProductDAO;
 import com.xtivia.boostcamp.domain.Product;
 import com.xtivia.boostcamp.service.IProductService;

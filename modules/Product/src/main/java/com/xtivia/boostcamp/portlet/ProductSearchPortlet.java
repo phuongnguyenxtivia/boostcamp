@@ -2,7 +2,6 @@ package com.xtivia.boostcamp.portlet;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.xtivia.boostcamp.common.ModuleConstants;
 import com.xtivia.boostcamp.portlet.utils.PortletUtils;
@@ -13,7 +12,6 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
-import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
 import javax.portlet.ProcessAction;
 import javax.portlet.RenderRequest;
