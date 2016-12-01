@@ -13,6 +13,8 @@ import java.util.List;
 public interface IBaseDAO <T, PK extends Serializable> {
 	List<T> getList();
 	
+	List<T> getListByKey(PK key);
+	
 	T get(PK key);
 	
 	void add(T entity);

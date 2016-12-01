@@ -29,6 +29,30 @@
 %>
 
 <div class="container">
+	<p class="text-info"><b><liferay-ui:message key="${msgWelcome}"/></b></p>
+	
+	<portlet:resourceURL var="ajaxURL"></portlet:resourceURL>
+	<script>
+		function <portlet:namespace/>ajaxCall(prodId) {
+			$.ajax({
+				url : '${ajaxURL}',
+				data : {
+					prodId : prodId
+				},
+				type : 'POST',
+				dataType : "json",
+				success : function(data) {
+					// do stuff on success
+					$(this).closest('tr').remove();
+				     return false;
+				},
+				error : function() {
+					//do stuff on error
+					console.log('Error Occurred');
+				}
+			});
+		}
+	</script>
 	<div class="table-responsive">
 		<table class="table table-hover">
 			<thead>
@@ -55,16 +79,13 @@
 				<fmt:setLocale value="en_US"/>
 
 				<c:forEach items="${products}" var="product">
-					<tr>
+					<tr id="row_${products}">
 						<c:if test="<%= showProductId %>">
 							<td>
-								<portlet:actionURL var="urlViewProductDetail">
-									<portlet:param name="javax.portlet.action"
-										value="processActionViewProductDetail" />
-									<portlet:param name="jspPage" value="<%= ModuleConstants.URL_PRODUCT_VIEW %>" />
+								<portlet:actionURL var="goToViewProductPageAU" name="goToViewProductPagePA">
 									<portlet:param name="prodId" value="${product.id}" />
 								</portlet:actionURL>
-								<a href="${urlViewProductDetail}">${product.id}</a>
+								<a href="${goToViewProductPageAU}">${product.id}</a>
 							</td>
 						</c:if>
 						<c:if test="<%= showProductName %>">
@@ -81,13 +102,12 @@
 						<c:if test="<%= showProductDescription %>">
 							<td>${product.description}</td>
 						</c:if>
-						<td>
-							<portlet:actionURL var="urlDeleteProduct">
-								<portlet:param name="javax.portlet.action"
-									value="processActionDeleteProduct" />
+						<td><!-- 
+							<portlet:actionURL var="deleteProductAU" name="deleteProductPA">
 								<portlet:param name="prodId" value="${product.id}" />
 							</portlet:actionURL>
-							<a href="${urlDeleteProduct}"><liferay-ui:message key="url.delete"/></a>
+							<a href="${deleteProductAU}"><liferay-ui:message key="url.delete"/></a> -->
+							<a href="#" onclick="<portlet:namespace/>ajaxCall('${product.id}')"><liferay-ui:message key="url.delete"/>
 						</td>
 					</tr>
 				</c:forEach>
@@ -95,10 +115,7 @@
 		</table>
 	</div>
 	<div>
-		<portlet:renderURL var="renderAddProdUrl"
-			windowState="${renderRequest.windowState}"
-			copyCurrentRenderParameters="false"
-			portletMode="${renderRequest.portletMode}">
+		<portlet:renderURL var="renderAddProdUrl">
 			<portlet:param name="jspPage" value="<%= ModuleConstants.URL_PRODUCT_ADD %>" />
 		</portlet:renderURL>
 		<a href="${renderAddProdUrl}"><liferay-ui:message key="url.add"/></a>

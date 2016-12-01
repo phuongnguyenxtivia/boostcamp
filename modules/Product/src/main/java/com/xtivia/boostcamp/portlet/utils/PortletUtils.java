@@ -13,7 +13,6 @@ import javax.portlet.RenderResponse;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.xtivia.boostcamp.portlet.ProductPortlet;
 
 /**
  * @author pnguyen

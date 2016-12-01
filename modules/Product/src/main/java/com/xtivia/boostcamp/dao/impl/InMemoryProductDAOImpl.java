@@ -87,4 +87,17 @@ public class InMemoryProductDAOImpl implements IProductDAO {
 
         return "P" + newId;
     }
+
+	@Override
+	public List<Product> getListByKey(String key) {
+		List<Product> list = new ArrayList<Product>(); 
+
+        for (Product product : products) {
+            if (product != null && product.getId() != null && product.getId().startsWith(key)) {
+            	list.add(product);
+            }
+        }
+
+        return list;
+	}
 }
