@@ -1,0 +1,5 @@
+Bundle-SymbolicName: lr05.product
+Bundle-Version: 1.0.0
+#Bundle-ClassPath: ., lib/lr05.product.service.builder-api.jar
+#-includeresource: @lib/lr05.product.service.builder-api.jar!/
+-metatype: *

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+	<sql id="com.xtivia.boostcamp.service.persistence.ProductFinder.findAll">
+	
+			<![CDATA[
+				SELECT 
+				    *
+				FROM
+				    LR_PRODUCT_SB_Product
+			]]>
+	</sql>
+	<sql id="com.xtivia.boostcamp.service.persistence.ProductFinder.findAllByKey">
+	
+			<![CDATA[
+				SELECT 
+				    *
+				FROM
+				    LR_PRODUCT_SB_Product
+				WHERE
+					id like ?
+			]]>
+	</sql>
+</custom-sql>

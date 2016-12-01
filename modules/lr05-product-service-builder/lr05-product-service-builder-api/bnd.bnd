@@ -1,0 +1,7 @@
+Bundle-SymbolicName: lr05.product.service.builder-api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.xtivia.boostcamp.exception,\
+	com.xtivia.boostcamp.model,\
+	com.xtivia.boostcamp.service,\
+	com.xtivia.boostcamp.service.persistence
