@@ -9,7 +9,7 @@ My first training project for Liferay 7
 For your convinience, folder `outputs` will contain all JAR and WAR files
 
 ## Deploy
-Copy JAR/WAR files to {your Liferay home}\deploy folder
+Copy JAR/WAR files to `{your Liferay home}\deploy` folder
 ###### Note: may be conflict name for productSearch portlet, regards to naming. Will refactor it later
 
 ## Link
