@@ -9,7 +9,7 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"com.liferay.portlet.display-category=PhuongNguyen",
+		"com.liferay.portlet.display-category=PhuongNguyen.LR04",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.display-name=lr04-sender-portlet Portlet",
 		"javax.portlet.init-param.template-path=/",
