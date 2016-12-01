@@ -27,9 +27,9 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"com.liferay.portlet.display-category=PhuongNguyen",
+		"com.liferay.portlet.display-category=PhuongNguyen.LR05",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.display-name=Product Search Portlet",
+		"javax.portlet.display-name=lr05-product-search Portlet",
 		"javax.portlet.init-param.template-path=",
 		"javax.portlet.init-param.view-template=/jsp/products/product/searchByProdId.jsp",
 		"javax.portlet.resource-bundle=content.Language",

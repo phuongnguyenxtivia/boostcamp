@@ -71,7 +71,7 @@ public class ProductFinderImpl extends ProductFinderBaseImpl implements ProductF
 	        session = openSession();
 	        
 	        DynamicQuery query = DynamicQueryFactoryUtil.forClass(Product.class)
-	                .add(RestrictionsFactoryUtil.like("id", key + "%"));
+	                .add(RestrictionsFactoryUtil.eq("id", Long.valueOf(key)));
 	        List<Product> entries = ProductLocalServiceUtil.dynamicQuery(query);
 	        
 	        return entries;

@@ -189,14 +189,14 @@ public class ProductLocalServiceImpl extends ProductLocalServiceBaseImpl {
 
 		Product product = productPersistence.findByPrimaryKey(productId);
 
-		AssetEntry assetEntry = assetEntryLocalService.fetchEntry(Product.class.getName(), productId);
-
-		assetLinkLocalService.deleteLinks(assetEntry.getEntryId());
-
-		assetEntryLocalService.deleteEntry(Product.class.getName(), product.getId());
-
-		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(Product.class);
-		indexer.delete(product);
+//		AssetEntry assetEntry = assetEntryLocalService.fetchEntry(Product.class.getName(), productId);
+//
+//		assetLinkLocalService.deleteLinks(assetEntry.getEntryId());
+//
+//		assetEntryLocalService.deleteEntry(Product.class.getName(), product.getId());
+//
+//		Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(Product.class);
+//		indexer.delete(product);
 
 		return deleteProduct(product);
 	}
