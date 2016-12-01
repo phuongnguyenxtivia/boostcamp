@@ -1,33 +1,25 @@
 <%@ include file="/init.jsp"%>
 
 <%@ page import="com.liferay.portal.kernel.util.Constants" %>
+<%@ page import="com.liferay.portal.kernel.util.GetterUtil" %>
 
 <%
 	ProductConfiguration configuration = (ProductConfiguration) renderRequest
 			.getAttribute(ProductConfiguration.class.getName());
 
-	String productId = StringPool.BLANK;
-	String productName = StringPool.BLANK;
-	String productQuantity = StringPool.BLANK;
-	String productUnitPrice = StringPool.BLANK;
-	String productDescription = StringPool.BLANK;
+	boolean showProductId = false;
+	boolean showProductName = false;
+	boolean showProductQuantity = false;
+	boolean showProductUnitPrice = false;
+	boolean showProductDescription = false;
 
 	if (Validator.isNotNull(configuration)) {
-		productId = portletPreferences.getValue("productId", String.valueOf(configuration.productId()));
-		productName = portletPreferences.getValue("productName", String.valueOf(configuration.productName()));
-		productQuantity = portletPreferences.getValue("productQuantity",
-				String.valueOf(configuration.productQuantity()));
-		productUnitPrice = portletPreferences.getValue("productUnitPrice",
-				String.valueOf(configuration.productUnitPrice()));
-		productDescription = portletPreferences.getValue("productDescription",
-				String.valueOf(configuration.productDescription()));
+		showProductId = GetterUtil.getBoolean(portletPreferences.getValue("productId", String.valueOf(configuration.productId())));
+		showProductName = GetterUtil.getBoolean(portletPreferences.getValue("productName", String.valueOf(configuration.productName())));
+		showProductQuantity = GetterUtil.getBoolean(portletPreferences.getValue("productQuantity", String.valueOf(configuration.productQuantity())));
+		showProductUnitPrice = GetterUtil.getBoolean(portletPreferences.getValue("productUnitPrice", String.valueOf(configuration.productUnitPrice())));
+		showProductDescription = GetterUtil.getBoolean(portletPreferences.getValue("productDescription", String.valueOf(configuration.productDescription())));
 	}
-
-	String showProductId = ("true".equalsIgnoreCase(productId)) ? "checked" : "";
-	String showProductName = ("true".equalsIgnoreCase(productName)) ? "checked" : "";
-	String showProductQuantity = ("true".equalsIgnoreCase(productQuantity)) ? "checked" : "";
-	String showProductUnitPrice = ("true".equalsIgnoreCase(productUnitPrice)) ? "checked" : "";
-	String showProductDescription = ("true".equalsIgnoreCase(productDescription)) ? "checked" : "";
 %>
 
 <div class="container">
@@ -38,54 +30,43 @@
 		<liferay-portlet:renderURL portletConfiguration="<%=true%>"
 			var="configurationRenderURL" />
 
-		<form id="<portlet:namespace />frm_configProductsView" action="${configurationActionURL}"
-			method="post">
-			<input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
-			<input name="redirect" type="hidden" value="${configurationRenderURL}" />
+		<aui:form action="${configurationActionURL}" method="post" name="fm">
+			<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
+			<aui:input name="redirect" type="hidden" value="${configurationRenderURL}" />
 
-			<div class="checkbox">
-				<input type="checkbox" class="form-control" id="prod_id"
-					name="<portlet:namespace />prodId"
-					<%= showProductId %> /> 
-				<label for="prod_id">
-					<liferay-ui:message	key="prod.id" />
-				</label>
-			</div>
-			<div class="checkbox">
-				<input type="checkbox" class="form-control" id="prod_name"
-					name="<portlet:namespace />prodName"
-					<%= showProductName %> /> 
-				<label for="prod_name">
-					<liferay-ui:message	key="prod.name" />
-				</label>
-			</div>
-			<div class="checkbox">
-				<input type="checkbox" class="form-control" id="prod_quantity"
-					name="<portlet:namespace />prodQuantity"
-					<%= showProductQuantity %> /> 
-				<label for="prod_quantity">
-					<liferay-ui:message	key="prod.quantity" />
-				</label>
-			</div>
-			<div class="checkbox">
-				<input type="checkbox" class="form-control" id="prod_unitPrice"
-					name="<portlet:namespace />prodUnitPrice"
-					<%= showProductUnitPrice %> /> 
-				<label for="prod_unitPrice">
-					<liferay-ui:message	key="prod.unitPrice" />
-				</label>
-			</div>
-			<div class="checkbox">
-				<input type="checkbox" class="form-control" id="prod_desc"
-					name="<portlet:namespace />prodDescription"
-					<%= showProductDescription %> /> 
-				<label for="prod_desc">
-					<liferay-ui:message	key="prod.desc" />
-				</label>
-			</div>
+			<c:set var="lbl_prodId">
+				<liferay-ui:message key="prod.id" />
+			</c:set>
+			<aui:input type="checkbox" name="preferences--productId--" value="<%= showProductId %>"
+				label="${lbl_prodId}" inlineLabel="true" />
+
+			<c:set var="lbl_prodName">
+				<liferay-ui:message key="prod.name" />
+			</c:set>
+			<aui:input type="checkbox" name="preferences--productName--" value="<%= showProductName %>"
+				label="${lbl_prodName}" />
+				
+			<c:set var="lbl_prodQuantity">
+				<liferay-ui:message key="prod.quantity" />
+			</c:set>
+			<aui:input type="checkbox" name="preferences--productQuantity--" value="<%= showProductQuantity %>"
+				label="${lbl_prodQuantity}" />
+
+			<c:set var="lbl_prodUnitPrice">
+				<liferay-ui:message key="prod.unitPrice" />
+			</c:set>
+			<aui:input type="checkbox" name="preferences--productUnitPrice--" value="<%= showProductUnitPrice %>"
+				label="${lbl_prodUnitPrice}" />
+
+			<c:set var="lbl_prodDescription">
+				<liferay-ui:message key="prod.desc" />
+			</c:set>
+			<aui:input type="checkbox" name="preferences--productDescription--" value="<%= showProductDescription %>"
+				label="${lbl_prodDescription}" />
+
 			<button type="submit" class="btn btn-primary">
 				<liferay-ui:message key="frm.btnSave" />
 			</button>
-		</form>
+		</aui:form>
 	</div>
 </div>
