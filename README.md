@@ -10,7 +10,7 @@ For your convinience, folder `outputs` will contain all JAR and WAR files
 
 ## Deploy
 Copy JAR/WAR files to `{your Liferay home}\deploy` folder
-###### Note: may be conflict name for productSearch portlet, regards to naming. Will refactor it later
+#### **Note:** may be conflict name for productSearch portlet, regards to naming. Will refactor it later
 
 ## Link
 For Maven Liferay project (LR02-DEV), kindly refers to this [link](https://github.com/phuongnguyenxtivia/maven-portlet)
