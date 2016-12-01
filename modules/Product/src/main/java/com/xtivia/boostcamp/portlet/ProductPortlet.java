@@ -63,9 +63,9 @@ import org.osgi.service.component.annotations.Modified;
 	immediate = true,
 	property = {
 		"com.liferay.portlet.configuration-action-class=com.xtivia.boostcamp.portlet.configuration.ProductConfigurationAction",
-		"com.liferay.portlet.display-category=PhuongNguyen",
+		"com.liferay.portlet.display-category=PhuongNguyen.LR01",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.display-name=Product Portlet",
+		"javax.portlet.display-name=lr01-product Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.path-jsp=/jsp/products",
 		"javax.portlet.init-param.view-template=/jsp/products/view.jsp",

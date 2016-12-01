@@ -21,9 +21,9 @@ import org.osgi.service.component.annotations.Component;
 @Component(
 	immediate = true,
 	property = {
-		"com.liferay.portlet.display-category=PhuongNguyen",
+		"com.liferay.portlet.display-category=PhuongNguyen.LR00",
 		"com.liferay.portlet.instanceable=true",
-		"javax.portlet.display-name=hello-you Portlet",
+		"javax.portlet.display-name=lr00-hello-you Portlet",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.portlet-mode=text/html;view,edit",
 		"javax.portlet.init-param.view-template=/view.jsp",
@@ -34,10 +34,10 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 
-public class HelloYouPortlet extends MVCPortlet {
+public class LR00HelloYouPortlet extends MVCPortlet {
 	protected String editJSP;
 	protected String viewJSP;
-	private static Log _log = LogFactoryUtil.getLog(HelloYouPortlet.class);
+	private static Log _log = LogFactoryUtil.getLog(LR00HelloYouPortlet.class);
 	
 	@Override
 	public void init() throws PortletException {
