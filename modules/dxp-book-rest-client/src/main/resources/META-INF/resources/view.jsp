@@ -2,10 +2,10 @@
 
 <div id="<portlet:namespace />">
     <index></index>
-    <script src="/o/dxp-book-rest-client/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="/o/dxpbookrestclient/node_modules/systemjs/dist/system.src.js"></script>
     <script>
         System.config({
-            baseURL: '/o/dxp-book-rest-client/',
+            baseURL: '/o/dxpbookrestclient/',
             paths: {
                 // paths serve as alias
                 'npm:': 'node_modules/'

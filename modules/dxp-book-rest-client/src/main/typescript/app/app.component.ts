@@ -3,15 +3,16 @@ import { SamplesApi } from '../generated/index';
 
 @Component({
     selector: 'index',
-    templateUrl: '/o/dxp-book-rest-client/templates/app.html'
+    templateUrl: '/o/dxpbookrestclient/templates/app.html'
 })
 export class AppComponent {
-    user = {};
+    book = {};
 
     constructor(public samples: SamplesApi) {
     }
 
     ngOnInit() {
-        this.samples.getCurrentUser().forEach(u => this.user = u);
+        //this.samples.getAllBook().forEach(u => this.book = u);
+        console.log(this.samples.getAllBook());
     }
 }
