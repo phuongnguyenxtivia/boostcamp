@@ -1,1 +1,30 @@
-TEST BOOK
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center font-weight-bold">
+                <th>
+                    ISBN
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Summary
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+			<tr *ngFor="let book of books">
+				<td>{{ book.isbn }}</td>
+				<td>{{ book.title }}</td>
+				<td>{{ book.author }}</td>
+				<td>{{ book.summary }}</td>
+				<td>Delete</td>
+			</tr>
+        </tbody>
+    </table>
+</div>

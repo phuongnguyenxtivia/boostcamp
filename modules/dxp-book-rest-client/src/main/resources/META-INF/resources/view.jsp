@@ -1,7 +1,11 @@
 <%@ include file="/init.jsp" %>
+<head>
+    <!-- Set the base href -->
+    <base href="/">
+</head>
 
 <div id="<portlet:namespace />">
-    <index></index>
+    <app>Loading...</app>
     <script src="/o/dxpbookrestclient/node_modules/systemjs/dist/system.src.js"></script>
     <script>
         System.config({

@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { SamplesApi } from '../generated/index';
+import { Book } from '../generated/model/book';
 
 @Component({
-    selector: 'index',
+    selector: 'app',
     templateUrl: '/o/dxpbookrestclient/templates/app.html'
 })
-export class AppComponent {
-    book = {};
+export class AppComponent implements OnInit {
+	errorMessage: string;
+    books : Book[];
 
-    constructor(public samples: SamplesApi) {
+    constructor(public samplesService: SamplesApi) {
     }
 
     ngOnInit() {
-        //this.samples.getAllBook().forEach(u => this.book = u);
-        console.log(this.samples.getAllBook());
+        this.getAllItems();
+        //console.log(this.books);
+    }
+
+    getAllItems() {
+    	this.samplesService.getAllBook()
+                     .subscribe(
+                       book => this.books = book,
+                       error =>  this.errorMessage = <any>error);
     }
 }
