@@ -5,7 +5,10 @@ import { Book } from '../generated/model/book';
 
 @Component({
     selector: 'app',
-    templateUrl: '/o/dxpbookrestclient/templates/app.html'
+    template: `
+        <h1 class="title">Angular 2 SPA (Router)</h1>
+        <router-outlet></router-outlet>
+    `
 })
 export class AppComponent implements OnInit {
 	errorMessage: string;

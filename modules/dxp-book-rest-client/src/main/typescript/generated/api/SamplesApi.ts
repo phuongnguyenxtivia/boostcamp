@@ -39,7 +39,7 @@ import { Configuration }                                     from '../configurat
 
 @Injectable()
 export class SamplesApi {
-    protected basePath = 'http://127.0.0.1:8080/o/rest/samples';
+    protected basePath = 'http://localhost:8080/o/rest/samples';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 

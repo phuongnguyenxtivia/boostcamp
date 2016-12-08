@@ -112,7 +112,7 @@ definitions:
   Book:
     type: object
     properties:
-      id:
+      isbn:
         type: integer
         format: int64
       title:

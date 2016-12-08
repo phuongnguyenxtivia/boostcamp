@@ -25,7 +25,7 @@
 import * as models from './models';
 
 export interface Book {
-    id?: number;
+    isbn?: number;
 
     title?: string;
 
