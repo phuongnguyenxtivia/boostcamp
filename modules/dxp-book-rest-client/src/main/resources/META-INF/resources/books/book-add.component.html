@@ -4,7 +4,7 @@
 	    	ISBN
 	    </div>
 	    <div class="col-md-8">
-	    	{{ book.isbn }}
+	    	<input [(ngModel)]="book.isbn" placeholder="ISBN">
 	    </div>
   	</div>
   	<div class="row">
@@ -12,7 +12,7 @@
 	    	Title
 	    </div>
 	    <div class="col-md-8">
-	    	{{ book.title }}
+	    	<input [(ngModel)]="book.title" placeholder="Title">
 	    </div>
   	</div>
   	<div class="row">
@@ -20,7 +20,8 @@
 	    	Author
 	    </div>
 	    <div class="col-md-8">
-	    	{{ book.author }}
+	    	<input [(ngModel)]="book.author" placeholder="Author">
+	    	
 	    </div>
   	</div>
   	<div class="row">
@@ -28,11 +29,11 @@
 	    	Summary
 	    </div>
 	    <div class="col-md-8">
-	    	{{ book.summary }}
+	    	<input [(ngModel)]="book.summary" placeholder="Summary">
 	    </div>
   	</div> 
 	<div class="row">
 		<button type="button" class="btn btn-link" (click)="goToBookList()">Back</button>
-		<button type="button" class="btn btn-link" (click)="goToBookEdit(book.isbn)">Edit</button>
+		<button type="button" class="btn btn-primary" (click)="addBook()">Save</button>
     </div>  	  	
 </div>

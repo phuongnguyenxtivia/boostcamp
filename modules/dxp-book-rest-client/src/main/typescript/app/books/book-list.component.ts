@@ -11,11 +11,9 @@ import { Book } from '../../generated/model/book';
 })
 export class BookListComponent implements OnInit {
 	errorMessage: string;
-    // books : Book[];
-    books: Observable<Book>;
+    books : Book[];
+    //books: Observable<Book>;
 
-    // constructor(public samplesService: SamplesApi) {
-    // }
     constructor(
         private sampleApi: SamplesApi,
         private route: ActivatedRoute,
@@ -24,18 +22,32 @@ export class BookListComponent implements OnInit {
 
     ngOnInit() {
         this.getAllBooks();
-        //console.log(this.books);
     }
 
     getAllBooks() {
-    	// this.samplesService.getAllBook()
-     //                 .subscribe(
-     //                   book => this.books = book,
-     //                   error =>  this.errorMessage = <any>error);
-         this.books = this.sampleApi.getAllBook();
+    	this.sampleApi.getAllBook()
+            .subscribe(
+                books => this.books = books,
+                error =>  this.errorMessage = <any>error);
+    }
+
+    deleteBook(book: Book) {
+        this.sampleApi
+            .deleteBook(book.isbn.toString())
+            .subscribe(
+                response => { console.log('success'); }, // NOTE: Success function never been called since deleteBook return nothing, only status
+                error =>  this.errorMessage = <any>error);
+
+        // TO-DO: it is dangerous, the following code should be put in a Success callback
+        var index = this.books.indexOf(book);
+        this.books.splice(index, 1);
     }
 
     onSelect(book: Book) {
-        this.router.navigate(['/book', book.isbn ]);
+        this.router.navigate(['/books/book', book.isbn ]);
+    }
+
+     goToBookAdd() {
+        this.router.navigate(['/books/book-add']);
     }
 }

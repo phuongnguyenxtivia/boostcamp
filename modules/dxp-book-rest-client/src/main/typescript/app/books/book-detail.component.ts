@@ -38,7 +38,6 @@ export class BookDetailComponent implements OnInit {
 
     ngOnInit() {
         this.getBook();
-        console.log(this.book);
     }
 
     getBook() {
@@ -46,23 +45,13 @@ export class BookDetailComponent implements OnInit {
         this.book = this.route.params
             .switchMap((params: Params) => this.sampleApi.getBook(params['isbn']))
             .subscribe((book: Book) => this.book = book);
-
-        // let isbn : string = ""; 
-
-        // this.route.params.subscribe((params: Params) => {
-        //     isbn = params['isbn'];
-        // });
-        // // console.log(isbn);
-        // this.book = this.sampleApi.getBook(isbn)
-        //         .subscribe((book: Book) => this.book = book);
     }
 
     goToBookList() {
-        //let bookId = this.book ? this.book.isbn : null;
-        // Pass along the hero id if available
-        // so that the HeroList component can select that hero.
-        //this.router.navigate(['/books', { id: bookId, foo: 'foo' }]);
-
         this.router.navigate(['/books']);
+    }
+
+    goToBookEdit(isbn: string) {
+        this.router.navigate(['/books/book-edit', isbn ]);
     }
 }

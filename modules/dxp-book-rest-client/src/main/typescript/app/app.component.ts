@@ -19,13 +19,12 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.getAllItems();
-        //console.log(this.books);
     }
 
     getAllItems() {
     	this.samplesService.getAllBook()
-                     .subscribe(
-                       book => this.books = book,
-                       error =>  this.errorMessage = <any>error);
+            .subscribe(
+                book => this.books = book,
+                error =>  this.errorMessage = <any>error);
     }
 }
